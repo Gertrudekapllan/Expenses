@@ -5,7 +5,7 @@ from expense.models import Expense
 
 
 def expense_list(request):
-    services = Expense.objects.all()
+    expenses = Expense.objects.all()
     return render(request, 'expense/expense-list.html', locals())
 
 
