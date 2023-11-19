@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <main class="tariff">
+        <h2 class="title">
+            Create tariff
+        </h2>
+        <form method="post" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_div}}
+            <button type="submit" class="save btn btn-primary mt-4" style="width: 100%;">
+                Создать расход
+            </button>
+        </form>
+    </main>
+{% endblock content %}
