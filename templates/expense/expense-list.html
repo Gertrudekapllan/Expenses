@@ -1,34 +1,48 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<main>
-  <h2 class="title">
-    Список РАСХОДОВ
-  </h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">Название</th>
-        <th scope="col">Расход</th>
-        <th scope="col">Дата</th>
-        <th scope="col">id Категории</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for data in expenses %}
-        <tr>
-          <th scope="row">{{data.id}}</th>
-          <td>
-            <a href="{% url 'expense:expense-list' %}">{{data.title}}</a>
-          </td>
-          <td>{{data.expense}}</td>
-          <td>{{data.created}}</td>
-          <td>{{data.category_id}}</td>
-        </tr>
+    <main>
+        <h2 class="title">
+            Список РАСХОДОВ
+        </h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Название</th>
+                <th scope="col">Расход</th>
+                <th scope="col">Дата</th>
+                <th scope="col">id Категории</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in expenses %}
+                <tr>
+                    <th scope="row">{{ data.id }}</th>
+                    <td>
+                        <a href="{% url 'expense:expense-list' %}">{{ data.title }}</a>
+                    </td>
+                    <td>{{ data.expense }}</td>
+                    <td>{{ data.created }}</td>
+                    <td>{{ data.category_id }}</td>
+                </tr>
 
-      {% endfor %}
-    </tbody>
-  </table>
-</main>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {% for week in week_data %}
+                <div>
+                    <p>Weeeeek Start: {{ week.week_start }}, Tooootal Expenses: {{ week.total_expenses }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            {% for month in month_data %}
+                <div>
+                    <p>Month Start: {{ month.month_start }}, Tooootal Expenses: {{ month.total_expenses }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock content %}

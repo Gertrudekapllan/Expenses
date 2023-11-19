@@ -12,7 +12,7 @@ class Category(models.Model):
 class Expense(models.Model):
     title = models.CharField(max_length=100)
     expense = models.FloatField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=False)
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
